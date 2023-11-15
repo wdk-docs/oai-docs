@@ -1,0 +1,122 @@
+#### <a name="requestBodyObject"></a>Request Body Object
+
+Describes a single request body.
+
+##### Fixed Fields
+
+| Field Name                                       |                         Type                         | Description                                                                                                                                                                                                                                                                                 |
+| ------------------------------------------------ | :--------------------------------------------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a name="requestBodyDescription"></a>description |                       `string`                       | A brief description of the request body. This could contain examples of use. [CommonMark syntax](https://spec.commonmark.org/) MAY be used for rich text representation.                                                                                                                    |
+| <a name="requestBodyContent"></a>content         | Map[`string`, [Media Type Object](#mediaTypeObject)] | **REQUIRED**. The content of the request body. The key is a media type or [media type range](https://tools.ietf.org/html/rfc7231#appendix-D) and the value describes it. For requests that match multiple keys, only the most specific key is applicable. e.g. text/plain overrides text/\* |
+| <a name="requestBodyRequired"></a>required       |                      `boolean`                       | Determines if the request body is required in the request. Defaults to `false`.                                                                                                                                                                                                             |
+
+This object MAY be extended with [Specification Extensions](#specificationExtensions).
+
+##### Request Body Examples
+
+A request body with a referenced model definition.
+
+```json
+{
+  "description": "user to add to the system",
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "#/components/schemas/User"
+      },
+      "examples": {
+        "user": {
+          "summary": "User Example",
+          "externalValue": "https://foo.bar/examples/user-example.json"
+        }
+      }
+    },
+    "application/xml": {
+      "schema": {
+        "$ref": "#/components/schemas/User"
+      },
+      "examples": {
+        "user": {
+          "summary": "User example in XML",
+          "externalValue": "https://foo.bar/examples/user-example.xml"
+        }
+      }
+    },
+    "text/plain": {
+      "examples": {
+        "user": {
+          "summary": "User example in Plain text",
+          "externalValue": "https://foo.bar/examples/user-example.txt"
+        }
+      }
+    },
+    "*/*": {
+      "examples": {
+        "user": {
+          "summary": "User example in other format",
+          "externalValue": "https://foo.bar/examples/user-example.whatever"
+        }
+      }
+    }
+  }
+}
+```
+
+```yaml
+description: user to add to the system
+content:
+  "application/json":
+    schema:
+      $ref: "#/components/schemas/User"
+    examples:
+      user:
+        summary: User Example
+        externalValue: "https://foo.bar/examples/user-example.json"
+  "application/xml":
+    schema:
+      $ref: "#/components/schemas/User"
+    examples:
+      user:
+        summary: User example in XML
+        externalValue: "https://foo.bar/examples/user-example.xml"
+  "text/plain":
+    examples:
+      user:
+        summary: User example in Plain text
+        externalValue: "https://foo.bar/examples/user-example.txt"
+  "*/*":
+    examples:
+      user:
+        summary: User example in other format
+        externalValue: "https://foo.bar/examples/user-example.whatever"
+```
+
+A body parameter that is an array of string values:
+
+```json
+{
+  "description": "user to add to the system",
+  "required": true,
+  "content": {
+    "text/plain": {
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
+```
+
+```yaml
+description: user to add to the system
+required: true
+content:
+  text/plain:
+    schema:
+      type: array
+      items:
+        type: string
+```
