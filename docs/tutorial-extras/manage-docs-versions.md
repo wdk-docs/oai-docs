@@ -2,11 +2,11 @@
 sidebar_position: 1
 ---
 
-# Manage Docs Versions
+# 管理文档版本
 
 Docusaurus can manage multiple versions of your docs.
 
-## Create a docs version
+## 创建文档版本
 
 Release a version 1.0 of your project:
 
@@ -34,7 +34,7 @@ export default {
       items: [
         // highlight-start
         {
-          type: 'docsVersionDropdown',
+          type: "docsVersionDropdown",
         },
         // highlight-end
       ],

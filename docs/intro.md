@@ -1,23 +1,23 @@
 ---
-sidebar_position: 1
+sidebar_position: 11
 ---
 
-# Tutorial Intro
+# 教程简介
 
 Let's discover **Docusaurus in less than 5 minutes**.
 
-## Getting Started
+## 入门
 
 Get started by **creating a new site**.
 
 Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
 
-### What you'll need
+### 你需要什么
 
 - [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
   - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
 
-## Generate a new site
+## 生成新网站
 
 Generate a new Docusaurus site using the **classic template**.
 
@@ -31,7 +31,7 @@ You can type this command into Command Prompt, Powershell, Terminal, or any othe
 
 The command also installs all necessary dependencies you need to run Docusaurus.
 
-## Start your site
+## 启动您的网站
 
 Run the development server:
 
